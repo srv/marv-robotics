@@ -40,6 +40,8 @@ nodes =
     marv_robotics.nodes.gnss:gnss_plots
     marv_robotics.nodes.osm:navsatfix
     marv_robotics.nodes.osm:geo_json_trajectory
+    marv_robotics.nodes.nav_sts:navsts
+    marv_robotics.nodes.nav_sts:geo_json_navsts_trajectory
 
 # All columns of the listing view are a result of this configuration.
 # Each line here defines one column in the listing table.
@@ -124,6 +126,7 @@ details =
     camera_frames
     gnss_plots
     trajectory
+    trajectory_gps
 
 
 # A detail section has a title and is filled by a widget which usually
@@ -181,9 +184,14 @@ inputs = gnss_plots
 caption = gnss_plots.iterkeys()
 image = gnss_plots.itervalues()
 
-
 [detail trajectory]
-title = Trajectory
+title = NavSts
+widget = osm
+inputs = geo_json_navsts_trajectory
+geo_json = geo_json_navsts_trajectory
+
+[detail trajectory_gps]
+title = GPS
 widget = osm
 inputs = geo_json_trajectory
 geo_json = geo_json_trajectory
